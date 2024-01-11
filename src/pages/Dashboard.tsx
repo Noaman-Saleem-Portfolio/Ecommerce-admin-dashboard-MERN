@@ -3,6 +3,8 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 import userImg from "../assets/userpic.png";
+import data from "../assets/data.json";
+
 
 function Dashboard() {
   return (
@@ -45,6 +47,28 @@ function Dashboard() {
           />
         </section>
         {/* widget-container */}
+
+        <section className="graph-container">
+          <div className="revenue-chart">
+            <h2>Revenue & Transaction</h2>
+            {/* Grapph here */}
+          </div>
+
+          <div className="dashboard-categories">
+            <h2>Inventory</h2>
+            <div>
+              {data.categories.map((i) => (
+                <CategoryItem
+                  key={i.heading}
+                  heading={i.heading}
+                  value={i.value}
+                  color={`hsl(${i.value * 4},${i.value}%,50%)`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+        {/* graph-container */}
       </main>
     </div>
   );
@@ -102,5 +126,28 @@ const WidgetItem = ({
   </article>
   // widget
 );
+
+interface CategoryItemProps {
+  color: string;
+  value: number;
+  heading: string;
+}
+
+const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
+  <div className="category-item">
+    <h5>{heading}</h5>
+    <div>
+      <div
+        style={{
+          backgroundColor: color,
+          width: `${value}%`,
+        }}
+      ></div>
+    </div>
+    <span>{value}%</span>
+  </div>
+);
+
+
 
 export default Dashboard;
