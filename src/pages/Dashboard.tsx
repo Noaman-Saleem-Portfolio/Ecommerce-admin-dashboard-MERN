@@ -3,10 +3,10 @@ import AdminSidebar from "../components/AdminSidebar"
 function Dashboard() {
 
     return (
-      <div className="adminContainer">
+      <div className="admin-container">
         <AdminSidebar />
-        <main style={{backgroundColor:"blue"}}>
-          main
+        <main>
+          Dashboard
         </main>
       </div>
     )

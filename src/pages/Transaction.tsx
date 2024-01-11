@@ -1,7 +1,14 @@
+import AdminSidebar from "../components/AdminSidebar"
+
 function Transaction() {
 
     return (
-      <h1>Transaction</h1>
+      <div className="admin-container">
+        <AdminSidebar />
+        <main>
+          Transaction
+        </main>
+      </div>
     )
   }
   

@@ -1,7 +1,14 @@
+import AdminSidebar from "../components/AdminSidebar"
+
 function Products() {
 
     return (
-      <h1>Products</h1>
+      <div className="admin-container">
+        <AdminSidebar />
+        <main>
+          Products
+        </main>
+      </div>
     )
   }
   
