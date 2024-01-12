@@ -25,6 +25,7 @@
 
   .widget-container {
     @include flex(row, space-between, stretch, 2rem);
+    // flex-wrap: wrap;
     padding: 2rem 2rem 2rem 0;
 
     .widget {
@@ -34,6 +35,7 @@
       padding: 2rem;
       border-radius: 10px;
       @include flex(row, space-between, stretch, 0);
+      
 
       .widget-info {
         > p {
