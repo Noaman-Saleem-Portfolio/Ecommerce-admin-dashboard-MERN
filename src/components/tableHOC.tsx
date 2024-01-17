@@ -98,6 +98,7 @@ function TableHOC() {
 
   return (
     <div className="transaction-box">
+        <h2 className="heading">Transaction Details</h2>
       <table  className="table">
         <thead>
           {table.getHeaderGroups().map(headerGroup => (
