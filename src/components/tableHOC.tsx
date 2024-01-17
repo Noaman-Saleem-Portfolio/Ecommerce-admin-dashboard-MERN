@@ -2,20 +2,22 @@ import * as React from 'react'
 
 
 import {
+    SortingState,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 
-type Person = {
-  firstName: string
-  lastName: string
-  age: number
-  visits: number
-  status: string
-  progress: number
-}
+// type Person = {
+//   firstName: string
+//   lastName: string
+//   age: number
+//   visits: number
+//   status: string
+//   progress: number
+// }
 
 interface DataType {
     id: string;
@@ -27,6 +29,62 @@ interface DataType {
 
 const defaultData: DataType[] = [
     {
+        "id": "1",
+        "amount": 4000,
+        "quantity": 4,
+        "discount": 300,
+        "status": "Processing"
+      },
+      {
+        "id": "2",
+        "amount": 5100,
+        "quantity": 2,
+        "discount": 900,
+        "status": "Processing"
+      },
+      {
+        "id": "3",
+        "amount": 13000,
+        "quantity": 91,
+        "discount": 0,
+        "status": "Shipped"
+      },
+      {
+        "id": "4",
+        "amount": 2300,
+        "quantity": 4,
+        "discount": 2000,
+        "status": "Processing"
+      },
+      {
+        "id": "1",
+        "amount": 4000,
+        "quantity": 4,
+        "discount": 300,
+        "status": "Processing"
+      },
+      {
+        "id": "2",
+        "amount": 5100,
+        "quantity": 2,
+        "discount": 900,
+        "status": "Processing"
+      },
+      {
+        "id": "3",
+        "amount": 13000,
+        "quantity": 91,
+        "discount": 0,
+        "status": "Shipped"
+      },
+      {
+        "id": "4",
+        "amount": 2300,
+        "quantity": 4,
+        "discount": 2000,
+        "status": "Processing"
+      },
+      {
         "id": "1",
         "amount": 4000,
         "quantity": 4,
@@ -88,12 +146,20 @@ const columns = [
 
 function TableHOC() {
   const [data, setData] = React.useState(() => [...defaultData])
+  const [sorting, setSorting] = React.useState<SortingState>([])
+
 //   const rerender = React.useReducer(() => ({}), {})[1]
 
   const table = useReactTable({
     data,
     columns,
+    state: {
+        sorting,
+      },
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    debugTable: true,
+    onSortingChange: setSorting,
   })
 
   return (
@@ -103,16 +169,31 @@ function TableHOC() {
         <thead>
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                </th>
-              ))}
+              {headerGroup.headers.map(header => {
+                return (
+                  <th key={header.id} colSpan={header.colSpan}>
+                    {header.isPlaceholder ? null : (
+                      <div
+                        {...{
+                          className: header.column.getCanSort()
+                            ? 'cursor-pointer select-none'
+                            : '',
+                          onClick: header.column.getToggleSortingHandler(),
+                        }}
+                      >
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                        {{
+                          asc: ' 🔼',
+                          desc: ' 🔽',
+                        }[header.column.getIsSorted() as string] ?? null}
+                      </div>
+                    )}
+                  </th>
+                )
+              })}
             </tr>
           ))}
         </thead>
@@ -127,7 +208,7 @@ function TableHOC() {
             </tr>
           ))}
         </tbody>
-        <tfoot>
+        {/* <tfoot>
           {table.getFooterGroups().map(footerGroup => (
             <tr key={footerGroup.id}>
               {footerGroup.headers.map(header => (
@@ -142,7 +223,7 @@ function TableHOC() {
               ))}
             </tr>
           ))}
-        </tfoot>
+        </tfoot> */}
       </table>
       <div className="h-4" />
       {/* <button onClick={() => rerender()} className="border p-2">

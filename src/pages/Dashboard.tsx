@@ -7,6 +7,7 @@ import data from "../assets/data.json";
 import { BarChart, DoughnutChart } from "../components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
 import TableHOC from "../components/TableHOC";
+import TablePaginated from "../components/TablePaginated";
 
 function Dashboard() {
   return (
@@ -98,7 +99,9 @@ function Dashboard() {
           </div>
 
           {/* <Table data={data.transaction} /> */}
-          <TableHOC />
+          {/* <TableHOC /> */}
+
+          <TablePaginated />
         </section>
         {/* transaction-container */}
         
