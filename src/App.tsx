@@ -6,7 +6,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Products = lazy(() => import("./pages/Products"));
 const Transaction = lazy(() => import("./pages/Transaction"));
 const Customers = lazy(() => import("./pages/Customers"));
-const Table = lazy(() => import("./pages/dummy/Table"));
+// const Table = lazy(() => import("./pages/dummy/Table"));
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/admin/table" element={<Table />} />
+          {/* <Route path="/admin/table" element={<Table />} /> */}
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/product" element={<Products />} />
           <Route path="/admin/customer" element={<Customers />} />
