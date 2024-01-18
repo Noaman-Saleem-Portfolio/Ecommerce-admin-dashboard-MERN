@@ -6,9 +6,14 @@ import userImg from "../assets/userpic.png";
 import data from "../assets/data.json";
 import { BarChart, DoughnutChart } from "../components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
-import TableHOC from "../components/TableHOC";
+import { defaultData } from "../assets/rootData";
+import DashboardTable from "../components/DashboardTable";
+
 
 function Dashboard() {
+
+ 
+
   return (
     <div className="admin-container">
       <AdminSidebar />
@@ -98,9 +103,12 @@ function Dashboard() {
           </div>
 
           {/* <Table data={data.transaction} /> */}
-          <TableHOC />
+          {/* <TableHOC data={defaultData} columns={columns} classNameProp="transaction-box" heading="Transaction Details" dataType={DataType} /> */}
+
 
           {/* <TablePaginated /> */}
+
+          <DashboardTable InputData={defaultData} />
         </section>
         {/* transaction-container */}
         

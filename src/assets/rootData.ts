@@ -6,7 +6,7 @@ export interface DataType {
     status: string;
   }
 
-  export const defaultData: DataType[] = [
+  export const defaultData = [
     {
         "id": "1",
         "amount": 4000,
