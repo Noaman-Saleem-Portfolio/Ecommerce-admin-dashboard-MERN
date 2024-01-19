@@ -161,7 +161,7 @@ function Products() {
             true
           )}
         </main>
-      </div>
+      </div> 
     )
   }
   
