@@ -8,7 +8,7 @@ const Transaction = lazy(() => import("./pages/Transaction"));
 const Customers = lazy(() => import("./pages/Customers"));
 // const Table = lazy(() => import("./pages/dummy/Table"));
 
-function App() {
+function App() { 
 
   return (
     <Router>
