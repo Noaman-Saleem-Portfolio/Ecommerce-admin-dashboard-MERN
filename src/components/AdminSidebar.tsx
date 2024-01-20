@@ -4,7 +4,7 @@ import { Link, Location, useLocation } from "react-router-dom";
 import { AiFillFileText } from "react-icons/ai";
 import {
   FaChartBar,
-  FaChartLine,
+  FaChartLine, 
   FaChartPie,
   FaGamepad,
   FaStopwatch,

@@ -3,6 +3,7 @@ import AdminSidebar from "../components/AdminSidebar"
 import { createColumnHelper } from "@tanstack/react-table";
 import { Link } from "react-router-dom";
 import TableHOC from "../components/TableHOC";
+import { FaPlus } from "react-icons/fa";
 
 interface DataType {
   photo: ReactElement;
@@ -161,6 +162,9 @@ function Products() {
             true
           )}
         </main>
+        <Link to="/admin/product/new" className="create-product-btn">
+        <FaPlus />
+      </Link>
       </div> 
     )
   }

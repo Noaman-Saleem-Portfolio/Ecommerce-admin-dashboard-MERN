@@ -16,7 +16,7 @@ function Dashboard() {
 
   return (
     <div className="admin-container">
-      <AdminSidebar />
+      <AdminSidebar /> 
       <main className="dashboard">
         <div className="bar">
           <BsSearch />
